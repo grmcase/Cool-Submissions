@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hwk Cool Submissions</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+
+<div id="flippy-things">
+
+    <input v-model="form.name" type="text" placeholder="name" style="flex: none" v-on:blur="submit"/>
+    <input v-model="form.email" type="text" placeholder="email" v-on:blur="submit"/>
+    <div>{{validation}}</div>
+
+    <div
+            v-for="tab in tabs"
+            v-bind:key="tab.name"
+            v-on:click="tab.flipped = !tab.flipped"
+    >
+        {{ tab.flipped ? tab.codename : tab.name }}
+    </div>
+
+    <component v-bind:is="currentTab.codename" class="tab"></component>
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
